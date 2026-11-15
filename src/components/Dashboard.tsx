@@ -1,11 +1,11 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
+import { supabase } from '../lib/supabase'
 import {
   Upload,
   Download,
   Trash2,
   FileText,
-  Image,
   LogOut,
   Search,
   Loader2,
