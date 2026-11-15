@@ -2,11 +2,7 @@ import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { Mail, Lock, AlertCircle, CheckCircle } from 'lucide-react'
 
-interface AuthProps {
-  supabase: any
-}
-
-export default function Auth({ supabase }: AuthProps) {
+export default function Auth() {
   const [isLogin, setIsLogin] = useState(true)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

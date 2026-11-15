@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { supabase } from '../lib/supabase'
 import {
   Upload,
   Download,
@@ -8,17 +7,9 @@ import {
   FileText,
   Image,
   LogOut,
-  Plus,
   Search,
-  ChevronLeft,
-  Folder,
-  X,
-  Check,
   Loader2,
-  MoreVertical,
-  Eye,
   Copy,
-  Share2,
 } from 'lucide-react'
 
 interface FileItem {
@@ -28,14 +19,14 @@ interface FileItem {
   mime_type: string
   created_at: string
   path: string
+  public_url: string
 }
 
 interface DashboardProps {
-  supabase: any
   user: any
 }
 
-export default function Dashboard({ supabase, user }: DashboardProps) {
+export default function Dashboard({ user }: DashboardProps) {
   const [files, setFiles] = useState<FileItem[]>([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
@@ -57,12 +48,6 @@ export default function Dashboard({ supabase, user }: DashboardProps) {
       hour: '2-digit',
       minute: '2-digit',
     })
-  }
-
-  const getFileIcon = (mimeType: string) => {
-    if (mimeType.startsWith('image/')) return <Image className="w-10 h-10 text-green-500" />
-    if (mimeType === 'application/pdf') return <FileText className="w-10 h-10 text-red-500" />
-    return <FileText className="w-10 h-10 text-gray-400" />
   }
 
   const isImage = (mimeType: string) => mimeType.startsWith('image/')

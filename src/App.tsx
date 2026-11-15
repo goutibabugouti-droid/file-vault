@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {session ? <Dashboard supabase={supabase} user={session.user} /> : <Auth supabase={supabase} />}
+      {session ? <Dashboard user={session.user} /> : <Auth />}
     </div>
   )
 }
